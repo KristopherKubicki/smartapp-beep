@@ -43,8 +43,8 @@ def initialize() {
 }
 
 def switchHandler(evt) {
-//	if(evt.source == "APP_COMMAND") { 
-		log.debug "${evt.source} is the source: ${evt.description} : ${evt.data} : ${evt.displayName}"
+	if(evt.source == "APP_COMMAND") { 
+		log.debug "${evt.source} is the source: ${evt.description} : ${evt.displayName}"
     	sendSms(phone, "${evt.displayName}")
-//a s    }
+    }
 }
