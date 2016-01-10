@@ -18,7 +18,7 @@ preferences {
 		input "sirens", "capability.alarm", title: "Which?", required: true, multiple: true
 	}
 	section("Virtual Switch"){
-		input "dswitch", "capability.switch", title: "Which?", required: true, multiple: false
+		input "dswitch", "capability.momentary", title: "Which?", required: true, multiple: false
 	}
 }
 
@@ -34,10 +34,10 @@ def updated() {
 
 def initialized() {
     subscribe(dswitch, "switch.on", switchHandler)
+    subscribe(app,switchHandler)
 }
 
 def switchHandler(evt) {
     sirens?.siren()
-  	dswitch.off()
     sirens?.off()
 }
